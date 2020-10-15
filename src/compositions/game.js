@@ -27,8 +27,8 @@ export default function useGame() {
   const round = ref(0);
   const delay = ref(1000);
 
-  watch(delay, () => reset())
-  
+  watch(delay, () => reset());
+
   let activateTimerId;
 
   const activateTile = (id) => {
@@ -40,7 +40,7 @@ export default function useGame() {
       tile.active = false;
     }, 500);
   };
-  
+
   let chain = reactive([]);
 
   const generateChain = (len) => {
@@ -49,13 +49,13 @@ export default function useGame() {
       chain.push(tiles[Math.floor(Math.random() * tiles.length)].id);
     }
   };
-  
+
   const tilesDisabled = ref(true);
 
   let showChainIntervalId;
-  
+
   const playChain = (delay) => {
-    let index = 0
+    let index = 0;
     clearInterval(showChainIntervalId);
     tilesDisabled.value = true;
     showChainIntervalId = setInterval(() => {
@@ -67,7 +67,7 @@ export default function useGame() {
       index++;
     }, delay);
   };
-  
+
   const selectTile = (id) => {
     activateTile(id);
     if (chain[0] == id) {
@@ -80,29 +80,29 @@ export default function useGame() {
       return true;
     } else {
       reset();
-      
+
       return false;
     }
-  }
+  };
 
   const start = () => {
-    round.value = 1
+    round.value = 1;
     generateChain(round.value);
     playChain(delay.value);
-  }
-  
+  };
+
   const reset = () => {
-    clearInterval(showChainIntervalId)
-    chain.length = 0
-    round.value = 0
-    tilesDisabled.value = true
-  }
+    clearInterval(showChainIntervalId);
+    chain.length = 0;
+    round.value = 0;
+    tilesDisabled.value = true;
+  };
 
   const nextRound = () => {
-    round.value++
-    generateChain(round.value)
-    playChain(delay.value)
-  }
+    round.value++;
+    generateChain(round.value);
+    playChain(delay.value);
+  };
 
   return {
     tiles,
@@ -116,6 +116,6 @@ export default function useGame() {
     selectTile,
     reset,
     nextRound,
-    start
+    start,
   };
 }

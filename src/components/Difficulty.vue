@@ -35,16 +35,18 @@ export default {
       },
     ]);
 
-    const selectedLevel = ref(difficulty.find(el => el.default).level)
+    const selectedLevel = ref(difficulty.find((el) => el.default).level);
 
     const { delay } = inject("game");
-    
+
     watch(selectedLevel, (level, prevLevel) => {
-      const levelInfo = difficulty.find(el => el.level == selectedLevel.value)
+      const levelInfo = difficulty.find(
+        (el) => el.level == selectedLevel.value
+      );
       if (levelInfo) {
-        delay.value = levelInfo.delay
+        delay.value = levelInfo.delay;
       }
-    })
+    });
 
     return {
       difficulty,

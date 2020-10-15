@@ -14,21 +14,22 @@ import { inject } from "vue";
 export default {
   setup(props, { emit }) {
     const {
-      tiles, 
-      activateTile, 
-      selectTile, 
-      tilesDisabled, 
-      round, 
-      chain, 
-      generateChain, 
-      playChain, 
-      delay, 
-      nextRound, 
-      reset } = inject('game');
+      tiles,
+      activateTile,
+      selectTile,
+      tilesDisabled,
+      round,
+      chain,
+      generateChain,
+      playChain,
+      delay,
+      nextRound,
+      reset,
+    } = inject("game");
 
     const chooseTile = (e) => {
       if (!selectTile(e.target.dataset.id)) {
-        emit('game-end', `You lose after ${round.value} rounds!`)
+        emit("game-end", `You lose after ${round.value} rounds!`);
       }
     };
 

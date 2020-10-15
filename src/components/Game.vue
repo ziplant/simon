@@ -10,14 +10,14 @@
 import Tiles from "./Tiles";
 import Menu from "./Menu";
 import useGame from "@/compositions/game";
-import useMessage from '@/compositions/message';
+import useMessage from "@/compositions/message";
 import { ref, provide, readonly } from "vue";
 
 export default {
   setup() {
-    const game = {...useGame()};
+    const game = { ...useGame() };
 
-    provide('game', game)
+    provide("game", game);
 
     return {
       ...useMessage(),

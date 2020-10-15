@@ -15,19 +15,19 @@ import { inject } from "vue";
 
 export default {
   props: {
-    message: String
+    message: String,
   },
   setup(props, { emit }) {
-    const {round, start} = inject("game");
+    const { round, start } = inject("game");
 
     const startGame = () => {
       start();
-      emit('clear-message', '');
+      emit("clear-message", "");
     };
 
     return {
       round,
-      startGame
+      startGame,
     };
   },
   components: {
